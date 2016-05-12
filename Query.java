@@ -24,7 +24,7 @@ import org.apache.http.params.HttpParams;
 
 /**
  * @author Iver3oN Zhang
- * @date 2016Äê4ÔÂ26ÈÕ
+ * @date 2016å¹´4æœˆ26æ—¥
  * @email grepzwb@qq.com
  * Query.java
  * Impossible is nothing
@@ -40,16 +40,14 @@ public class Query {
 		httpClientPost();
 	}
 	
-	// HttpClient µÄPOST·½Ê½
+	// HttpClient çš„POSTæ–¹å¼
     public static void httpClientPost() {
         String urlAddress = "http://m.join.qq.com/query/result";
         HttpPost httpPost = new HttpPost(urlAddress);
         List paras = new ArrayList<>();
         NameValuePair pair1 = new BasicNameValuePair("type", "query_result");
-        /*NameValuePair pair2 = new BasicNameValuePair("idcard", "2829");
-        NameValuePair pair3 = new BasicNameValuePair("phone","17792612206");*/
-        NameValuePair pair2 = new BasicNameValuePair("idcard", "2678");
-        NameValuePair pair3 = new BasicNameValuePair("phone","18329688695");
+        NameValuePair pair2 = new BasicNameValuePair("idcard", "267*");
+        NameValuePair pair3 = new BasicNameValuePair("phone","1832968****");
         paras.add(pair1);
         paras.add(pair2);
         paras.add(pair3);
@@ -59,7 +57,7 @@ public class Query {
             HttpClient client = new DefaultHttpClient();
             try {
                 HttpResponse ht = client.execute(httpPost);
-                // Á¬½Ó³É¹¦
+                // è¿æ¥æˆåŠŸ
                 if (ht.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
                     HttpEntity het = ht.getEntity();
                     InputStream is = het.getContent();
@@ -97,14 +95,16 @@ public class Query {
     }
 
 	
-	// httpClient ·½Ê½·¢ËÍgetÇëÇó
-    //ÓÉÓÚÌÚÑ¶Ğ£ÕĞÎ¢ĞÅ¹ÙÍø²é¿´Ô´´úÂë  ÊÇÍ¨¹ıpost·½Ê½ÇëÇóµÄ£¬ÆäÊµÒ²±ØĞëÊÇpost·½Ê½¡£¡£¡£Õâ¸ö·½Ê½ÔİÊ±²»ÓÃ
+	// httpClient æ–¹å¼å‘é€getè¯·æ±‚
+    //ç”±äºè…¾è®¯æ ¡æ‹›å¾®ä¿¡å®˜ç½‘æŸ¥çœ‹æºä»£ç   æ˜¯é€šè¿‡postæ–¹å¼è¯·æ±‚çš„ï¼Œå…¶å®ä¹Ÿå¿…é¡»æ˜¯postæ–¹å¼ã€‚ã€‚ã€‚è¿™ä¸ªæ–¹å¼æš‚æ—¶ä¸ç”¨
     public static void httpClientGet() {
         System.out.println("--------------");
         String urlAddress = "http://m.join.qq.com/query/result";
         String type = "query_result";
-        String idcard = "2678";
-        String phone = "18329688695";
+        //your id back 4
+        String idcard = "267*";
+        //your phonenumber
+        String phone = "1832968****";
         String getUrl = urlAddress + "?type=" + type + "&idcard="
                 + idcard +"&phone="+phone;
         HttpGet httpGet = new HttpGet(getUrl);
